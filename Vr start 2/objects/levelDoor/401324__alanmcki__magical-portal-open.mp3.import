@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/401324__alanmcki__magical-portal-open.mp3-591d9e9909950fb7d66e6937eeed9c80.mp3str"
+
+[deps]
+
+source_file="res://objects/levelDoor/401324__alanmcki__magical-portal-open.mp3"
+dest_files=[ "res://.import/401324__alanmcki__magical-portal-open.mp3-591d9e9909950fb7d66e6937eeed9c80.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

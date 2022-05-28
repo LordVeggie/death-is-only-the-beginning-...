@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ForReuse/516566__kinoton__dark-dungeon-ambience.mp3" type="AudioStream" id=1]
+
+[node name="worldSound" type="AudioStreamPlayer3D"]
+stream = ExtResource( 1 )
+attenuation_model = 3
+unit_db = -2.0
+autoplay = true
+bus = "Environment"

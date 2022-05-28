@@ -1,0 +1,135 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scenes/defaultLevel/defaultWorld.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/credits/credits_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/credits/credits_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/credits/credits_3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/credits/credits_4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/credits/credits_5.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/credits/credits_6.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ForReuse/worldSound.tscn" type="PackedScene" id=10]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.15377, 3, 3.09213 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2.03798, 3, 2.04556 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2.02944, 3, 3.02741 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.02944, 3, 10.2473 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 2.07043, 3, 1.04546 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 4.16716, 3, 0.783688 )
+
+[node name="world origin" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="worldSound" parent="world" index="0" instance=ExtResource( 10 )]
+
+[node name="Enviornment" parent="world/Navigation/NavigationMeshInstance" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.2, 0 )
+
+[node name="GridMap" parent="world/Navigation/NavigationMeshInstance/Enviornment" index="0"]
+data = {
+"cells": PoolIntArray( 2, 0, 3, 0, 1, 1441795, 65533, 1, 1441793, 65534, 1, 655360, 65535, 1, 655364, 65534, 2, 1441795, 0, 3, 655363, 1, 3, 4, 3, 3, 655364, 65533, 3, 1048580, 2, 4, 1441795, 0, 5, 655363, 65533, 6, 4, 65535, 6, 655364, 0, 7, 1048579, 65534, 7, 1441795, 1, 8, 1441792, 65535, 8, 1441792, 0, 9, 1048579, 1, 9, 1441792, 65535, 9, 1441792, 1, 10, 655360, 65535, 10, 0, 1, 65530, 655364, 65535, 65530, 4, 1, 65531, 3, 65535, 65531, 1441795, 0, 65533, 3, 2, 65533, 1441795, 65534, 65533, 655363, 0, 65535, 655363, 1, 65535, 4, 3, 65535, 655364 )
+}
+
+[node name="StaticBody" type="StaticBody" parent="world/Navigation/NavigationMeshInstance/invisableWalls" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96448, 2.19847, -0.0376223 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89399, 4.39693, 4.94132 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93874, 3.0107, 9.96975 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97148, 3.0107, 13.9688 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.90284, 3.0107, 15.6091 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0444, 3.0107, 19.9536 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.95804, 3.0107, 0.93178 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.90284, 3.0107, -4.83262 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89399, 4.39693, -2.00147 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.03679, 3.0107, -9.97824 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98017, 3.0107, -9.97824 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15411e-07, 3.011, -11.7407 )
+shape = SubResource( 6 )
+
+[node name="arch" parent="world/objects" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -10.223 )
+currentLevel = 3
+
+[node name="swordPedestal" parent="world/objects" index="1"]
+visible = false
+
+[node name="info1" parent="world/objects" index="2" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 2, 20.864 )
+viewport_size = Vector2( 1920, 1500 )
+scene = ExtResource( 3 )
+
+[node name="info2" parent="world/objects" index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 13.2 )
+viewport_size = Vector2( 1920, 1500 )
+scene = ExtResource( 4 )
+
+[node name="info3" parent="world/objects" index="4" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 3.29238 )
+viewport_size = Vector2( 1920, 1500 )
+scene = ExtResource( 7 )
+
+[node name="info4" parent="world/objects" index="5" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 7.2 )
+viewport_size = Vector2( 1920, 1500 )
+scene = ExtResource( 6 )
+
+[node name="info5" parent="world/objects" index="6" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -0.8 )
+viewport_size = Vector2( 1920, 1500 )
+scene = ExtResource( 9 )
+
+[node name="info6" parent="world/objects" index="7" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.7855, 2, 5.15605 )
+viewport_size = Vector2( 1920, 1500 )
+scene = ExtResource( 8 )
+
+[node name="VrControllerMain" parent="players" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.096, 19.0632 )
+
+[node name="WorldEnvironment" parent="lights" index="1" instance=ExtResource( 5 )]

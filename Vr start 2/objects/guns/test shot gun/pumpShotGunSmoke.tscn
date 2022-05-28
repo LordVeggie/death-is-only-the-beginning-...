@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://objects/guns/commen/gunSmoke.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0367347, 0.146939, 0.35102, 0.636735, 0.738775, 1 )
+colors = PoolColorArray( 0.161648, 0.159302, 0.234375, 0.843137, 0.281369, 0.285156, 0.171539, 0.403922, 0.125, 0.092041, 0.0810547, 0.501961, 0.441406, 0.273412, 0.248291, 0.105882, 0.444099, 0.411987, 0.488281, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+min_value = 0.99
+max_value = 25.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 24.618 ), -17.9604, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 0.05
+gravity = Vector3( 0, 0.05, 0 )
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="Smoke" instance=ExtResource( 1 )]
+
+[node name="Particles" parent="." index="0"]
+cast_shadow = 0
+amount = 3000
+lifetime = 2.0
+visibility_aabb = AABB( -4, -4, -4, 20, 10, 20 )
+process_material = SubResource( 5 )

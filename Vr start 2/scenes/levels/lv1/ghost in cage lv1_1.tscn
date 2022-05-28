@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://characters/ghost/ghost in cage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/lv1/ghost in cage lv1_1.gd" type="Script" id=2]
+
+[node name="ghost in cage lv1_1" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+numOfDemonsToSpawn = 1
+
+[node name="demonSpawner" parent="." index="2"]
+transform = Transform( 0.707106, -0.707107, 0, 0.5, 0.499999, -0.707107, 0.5, 0.5, 0.707106, 0, 2.42958, 0 )

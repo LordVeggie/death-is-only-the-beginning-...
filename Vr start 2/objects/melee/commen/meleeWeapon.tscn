@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/Object_pickable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/melee/commen/code/meleeWeapon.gd" type="Script" id=2]
+
+[node name="meleeWeapon" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+highlight_mesh_instance = NodePath("")
+
+[node name="mesh" type="Spatial" parent="." index="2"]
+
+[node name="damageArea" type="Area" parent="." index="3"]
+
+[connection signal="area_entered" from="damageArea" to="." method="_on_damageArea_area_entered"]
+[connection signal="body_entered" from="damageArea" to="." method="_on_damageArea_body_entered"]

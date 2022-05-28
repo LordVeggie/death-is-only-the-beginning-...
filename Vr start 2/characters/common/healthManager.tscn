@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://characters/common/code/healthManager.gd" type="Script" id=1]
+[ext_resource path="res://characters/common/healthDisplay.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("healthDisplay/healthDisplayView")
+
+[sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = SubResource( 1 )
+
+[node name="healthManager" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="healthDisplay" parent="." instance=ExtResource( 2 )]
+material/0 = SubResource( 2 )
+
+[node name="healthBar" parent="healthDisplay/healthDisplayView" index="0"]
+value = 10.0
+
+[connection signal="health_changed" from="." to="healthDisplay" method="_on_healthManager_health_changed"]
+[connection signal="health_changed" from="." to="healthDisplay/healthDisplayView/healthBar" method="_on_healthManager_health_changed"]
+
+[editable path="healthDisplay"]
+[editable path="healthDisplay/healthDisplayView/healthBar"]

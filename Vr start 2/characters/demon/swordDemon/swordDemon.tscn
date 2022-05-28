@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://characters/demon/commen/demon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/demon/swordDemon/swordDemon.gd" type="Script" id=2]
+[ext_resource path="res://assets/objects/weapons/melee/swordDemonSword/swordDemonSword.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.498108, 1.60042, 0.502023 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody/mesh/demon/swordDemonSword:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 73.126, 180, 180 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("KinematicBody/mesh/demon/eyes:material/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "doDamage"
+} ]
+}
+
+[node name="swordDemon" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="demon" parent="KinematicBody/mesh" index="0"]
+transform = Transform( -0.6, -5.24537e-08, -9.05975e-08, -5.24537e-08, 0.6, -2.29283e-15, 9.05975e-08, 5.62746e-15, -0.6, 0, 1.2, 0 )
+
+[node name="Spatial" type="Spatial" parent="KinematicBody/mesh/demon" index="6"]
+transform = Transform( 1, -7.81597e-14, -2.84217e-14, 7.81597e-14, 1, 4.23516e-21, 2.84217e-14, -2.5411e-21, 1, -8.45432e-08, 0, 0.559904 )
+
+[node name="attackArea" type="Area" parent="KinematicBody/mesh/demon/Spatial" index="0"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody/mesh/demon/Spatial/attackArea" index="0"]
+transform = Transform( 1, -4.9738e-14, -2.84217e-14, 4.9738e-14, 1, 2.5411e-21, 2.84217e-14, 0, 1, -6.641e-08, 0, 0.439814 )
+shape = SubResource( 1 )
+
+[node name="swordDemonSword" parent="KinematicBody/mesh/demon" index="7" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.514968, 0, 0.403235 )
+
+[node name="deathEffect" parent="KinematicBody/mesh" index="1"]
+transform = Transform( -0.6, -5.24537e-08, -9.05975e-08, -5.24537e-08, 0.6, -2.29283e-15, 9.05975e-08, 5.62746e-15, -0.6, 0, 1.2, 0 )
+visible = true
+
+[node name="hitBoxes" parent="KinematicBody" index="3"]
+transform = Transform( -0.6, -5.24537e-08, -9.05975e-08, -5.24537e-08, 0.6, -2.29283e-15, 9.05975e-08, 5.62746e-15, -0.6, 0, 1.2, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+anims/RESET = SubResource( 3 )
+anims/attack = SubResource( 4 )
+
+[editable path="KinematicBody/mesh/demon"]
+[editable path="KinematicBody/hitBoxes"]
+[editable path="lookAt"]

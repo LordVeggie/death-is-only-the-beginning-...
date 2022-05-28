@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/344696__scrampunk__charm.mp3-c4d4675fdd259251b107f28a54046377.mp3str"
+
+[deps]
+
+source_file="res://characters/ghost/344696__scrampunk__charm.mp3"
+dest_files=[ "res://.import/344696__scrampunk__charm.mp3-c4d4675fdd259251b107f28a54046377.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

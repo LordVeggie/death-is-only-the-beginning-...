@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/516566__kinoton__dark-dungeon-ambience.mp3-daacd26ff73c5bea180365eedab806d3.mp3str"
+
+[deps]
+
+source_file="res://ForReuse/516566__kinoton__dark-dungeon-ambience.mp3"
+dest_files=[ "res://.import/516566__kinoton__dark-dungeon-ambience.mp3-daacd26ff73c5bea180365eedab806d3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,218 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://ghost.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/ghost/ghost.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/common/activateArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/characters/ghost/plasma drops.png" type="Texture" id=4]
+[ext_resource path="res://characters/ghost/428156__higgs01__yay.mp3" type="AudioStream" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.241584
+height = 0.972283
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.679245 )
+colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0 ), 0.0, 5.54273, 0, 0, Vector2( 1, 0 ), -0.442361, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+lifetime_randomness = 0.2
+emission_shape = 5
+emission_ring_radius = 0.8
+emission_ring_inner_radius = 0.0
+emission_ring_height = 0.8
+emission_ring_axis = Vector3( 0, 0, 1 )
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+scale_random = 1.0
+scale_curve = SubResource( 6 )
+color = Color( 1, 1, 1, 0.25098 )
+color_ramp = SubResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=4]
+material = SubResource( 3 )
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RigidBody/ghost:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RigidBody/ghost:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RigidBody/ghost:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.2, 0.2, 0.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RigidBody/ghost/ghost mouth:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -180 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RigidBody/CollisionShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "ghostCollected"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RigidBody/ghost:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1, 0 ), Vector3( 0, 1, 0 ), Vector3( 0.5, 2.8, 0 ), Vector3( 0, 4.6, 0.5 ), Vector3( -0.5, 6.4, 0 ), Vector3( 0, 8.2, -0.5 ), Vector3( 0, 10, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RigidBody/ghost:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RigidBody/ghost:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.2, 0.2, 0.2 ), Vector3( 0.2, 0.2, 0.2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RigidBody/ghost/ghost mouth:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -180 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="ghost" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+collision_layer = 2
+input_ray_pickable = false
+mode = 1
+mass = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.730435, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="ghost" parent="RigidBody" instance=ExtResource( 2 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0 )
+
+[node name="ghost mouth" parent="RigidBody/ghost" index="2"]
+transform = Transform( -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Particles" type="Particles" parent="RigidBody/ghost"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.929653, 0 )
+cast_shadow = 0
+amount = 10
+speed_scale = 0.6
+randomness = 1.0
+visibility_aabb = AABB( -4, -4.49512, -4, 8, 8, 8 )
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="activateArea" parent="RigidBody" instance=ExtResource( 3 )]
+
+[node name="makeGhostHover" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
+anims/ghostCollected = SubResource( 10 )
+
+[node name="collectionSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="stopCollectionSound" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="RigidBody/activateArea" to="." method="_on_activateArea_body_entered"]
+[connection signal="body_exited" from="RigidBody/activateArea" to="." method="_on_activateArea_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="stopCollectionSound" to="." method="_on_stopCollectionSound_timeout"]
+
+[editable path="RigidBody/ghost"]

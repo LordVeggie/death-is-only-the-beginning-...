@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/guns/commen/ammo.gd" type="Script" id=1]
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.05
+height = 0.04
+
+[node name="ammo" type="RigidBody"]
+collision_layer = 16
+continuous_cd = true
+script = ExtResource( 1 )
+picked_up_layer = 48
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="PickupCenter" type="Spatial" parent="."]

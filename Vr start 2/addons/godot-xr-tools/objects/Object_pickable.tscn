@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/Object_pickable.gd" type="Script" id=1]
+
+[node name="PickableObject" type="RigidBody"]
+collision_layer = 16
+collision_mask = 17
+script = ExtResource( 1 )
+highlight_mesh_instance = null
+picked_up_layer = 16
+
+[node name="PickupCenter" type="Spatial" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]

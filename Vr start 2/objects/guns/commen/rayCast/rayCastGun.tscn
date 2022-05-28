@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/guns/commen/gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/guns/commen/rayCast/rayCastGun.gd" type="Script" id=2]
+[ext_resource path="res://objects/guns/commen/BulletHitEffect.tscn" type="PackedScene" id=3]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("ammoDisplay/ammoDisplayView")
+
+[sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = SubResource( 1 )
+
+[node name="rayCastGun" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+picked_up_layer = 0
+bulletHitEffect = ExtResource( 3 )
+
+[node name="ammoDisplay" parent="." index="8"]
+material/0 = SubResource( 2 )
+
+[node name="shootPoint" type="RayCast" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037, -0.5 )
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 7
+collide_with_areas = true
+debug_shape_custom_color = Color( 1, 0, 0, 1 )

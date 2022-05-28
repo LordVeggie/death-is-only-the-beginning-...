@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/555519__eminyildirim__mage-fireball-skill.mp3-4ecb2d5e96c629bf525a2d30352a628c.mp3str"
+
+[deps]
+
+source_file="res://characters/demon/fireBallDemon/555519__eminyildirim__mage-fireball-skill.mp3"
+dest_files=[ "res://.import/555519__eminyildirim__mage-fireball-skill.mp3-4ecb2d5e96c629bf525a2d30352a628c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

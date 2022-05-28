@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/defaultLevel/defaultWorld.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/godot-xr-tools/functions/Function_pointer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ForReuse/worldSound.tscn" type="PackedScene" id=5]
+[ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/lv0/info_LV0.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.5, 1.5, 2.5 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("players/VrControllerMain/FPController/player/damage erea/hitBoxes/healthManager/healthDisplay/healthDisplayView")
+
+[sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = SubResource( 2 )
+
+[node name="world origin" instance=ExtResource( 1 )]
+
+[node name="worldSound" parent="world" index="0" instance=ExtResource( 5 )]
+
+[node name="GridMap" parent="world/Navigation/NavigationMeshInstance/Enviornment" index="0"]
+cell_size = Vector3( 0.5, 3.5, 0.5 )
+data = {
+"cells": PoolIntArray( 4, 3, 1048580, 2, 65531, 655364, 65533, 65531, 4, 0, 65535, 655363, 4, 65535, 1441796 )
+}
+
+[node name="StaticBody" type="StaticBody" parent="world/Navigation/NavigationMeshInstance/invisableWalls" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 2.5, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 2.5, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, 2.2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="world/Navigation/NavigationMeshInstance/invisableWalls/StaticBody" index="3"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, -2.7 )
+shape = SubResource( 1 )
+
+[node name="arch" parent="world/objects" index="0"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.92961, 1.03386, -1.23428 )
+
+[node name="swordPedestal" parent="world/objects" index="1"]
+visible = false
+
+[node name="LevelMenu" parent="world/objects" index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.05245 )
+viewport_size = Vector2( 2000, 1500 )
+scene = ExtResource( 2 )
+
+[node name="info1" parent="world/objects" index="3" instance=ExtResource( 3 )]
+transform = Transform( -2.62268e-08, 0, -1, 0, 0.7, 0, 0.6, 0, -4.37114e-08, 2.09012, 2.5, 0.741196 )
+viewport_size = Vector2( 1920, 1500 )
+scene = ExtResource( 7 )
+
+[node name="VrControllerMain" parent="players" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.096, 0.982579 )
+
+[node name="Function_pointer" parent="players/VrControllerMain/FPController/RightHandController" index="3" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100916, 0.0843215, -0.0833851 )
+
+[node name="healthDisplay" parent="players/VrControllerMain/FPController/player/damage erea/hitBoxes/healthManager" index="0"]
+transform = Transform( 0.999998, 1.03029e-13, -4.65868e-21, -1.03029e-13, 0.999998, 1.03029e-13, 1.05879e-21, -1.03029e-13, 0.999998, 3.8147e-06, -1.43051e-06, -2.86102e-06 )
+material/0 = SubResource( 3 )
+
+[node name="WorldEnvironment" parent="lights" index="1" instance=ExtResource( 6 )]
+
+[node name="OmniLight" type="OmniLight" parent="lights" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72453, 2.64789, 1.74455 )
+light_color = Color( 1, 0.462745, 0.0313726, 1 )
+light_specular = 5.658
+shadow_enabled = true
+shadow_bias = 3.0
+
+[node name="OmniLight2" type="OmniLight" parent="lights" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72453, 2.64789, -0.265329 )
+light_color = Color( 1, 0.462745, 0.0313726, 1 )
+light_specular = 5.658
+shadow_enabled = true
+shadow_bias = 3.526
+
+[node name="OmniLight3" type="OmniLight" parent="lights" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2612, 2.64789, -1.73462 )
+light_color = Color( 1, 0.462745, 0.0313726, 1 )
+light_specular = 5.658
+shadow_enabled = true
+shadow_bias = 3.526
+
+[node name="OmniLight4" type="OmniLight" parent="lights" index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25342, 2.64789, -1.74911 )
+light_color = Color( 1, 0.462745, 0.0313726, 1 )
+light_specular = 5.658
+shadow_enabled = true
+shadow_bias = 3.526
+
+[editable path="players/VrControllerMain"]
+[editable path="players/VrControllerMain/FPController"]
+[editable path="players/VrControllerMain/FPController/player/damage erea/hitBoxes"]
+[editable path="players/VrControllerMain/FPController/player/damage erea/hitBoxes/healthManager"]
+[editable path="players/VrControllerMain/FPController/player/damage erea/hitBoxes/healthManager/healthDisplay"]
+[editable path="players/VrControllerMain/FPController/player/damage erea/hitBoxes/healthManager/healthDisplay/healthDisplayView/healthBar"]

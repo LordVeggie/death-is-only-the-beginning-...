@@ -1,0 +1,231 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://objects/guns/commen/gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/objects/weapons/guns/test shot gun/pumpShotGun001.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/guns/test shot gun/GunShotSnglShotEx PE1097508.mp3" type="AudioStream" id=3]
+[ext_resource path="res://objects/guns/test shot gun/pumpShotGun.gd" type="Script" id=4]
+[ext_resource path="res://objects/guns/test shot gun/GunCockSingle PE1096303.mp3" type="AudioStream" id=5]
+[ext_resource path="res://objects/guns/test shot gun/GunDryFire PE1096501.mp3" type="AudioStream" id=6]
+[ext_resource path="res://objects/guns/test shot gun/casing.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/guns/test shot gun/pumpShotGunSmoke.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=6]
+resource_name = "emptyGun"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("audio/gunEmpty:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fire"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("mesh/pumpShotGun001/Cylinder003:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.1, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rumble")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "setRumble"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ejectCasing"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("audio/fire Audio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("audio/pump:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("muzzleFlash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.02, 0.05 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "reload"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("reloadErea/bullet:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("reloadErea/bullet:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0292419, 0.0353848, -0.0136491 ), Vector3( 0.00989956, 0.0353848, -0.0136491 ) ]
+}
+
+[sub_resource type="PrismMesh" id=1]
+size = Vector3( 0.01, 0.01, 0.01 )
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.04
+radial_segments = 12
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0.913725, 0, 1 )
+metallic = 1.0
+roughness = 0.5
+
+[sub_resource type="ViewportTexture" id=7]
+viewport_path = NodePath("ammoDisplay/ammoDisplayView")
+
+[sub_resource type="SpatialMaterial" id=8]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = SubResource( 7 )
+
+[node name="pumpShotGun" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+highlight_mesh_instance = NodePath("mesh/pumpShotGun001/Cylinder")
+picked_up_layer = 0
+hasLaser = true
+casing = ExtResource( 7 )
+gunRange = 45
+hasAmmoDisplay = true
+gunSmoke = ExtResource( 8 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/emptyGun = SubResource( 6 )
+anims/fire = SubResource( 4 )
+anims/reload = SubResource( 5 )
+
+[node name="smokeSpawn" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385106, -0.525031 )
+
+[node name="pumpShotGun001" parent="mesh" index="0" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="targetDot" parent="aim" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+
+[node name="audio" type="Spatial" parent="." index="7"]
+
+[node name="fire Audio" type="AudioStreamPlayer3D" parent="audio" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0344698, -0.518763 )
+stream = ExtResource( 3 )
+bus = "gunshots"
+
+[node name="pump" type="AudioStreamPlayer3D" parent="audio" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.11283 )
+stream = ExtResource( 5 )
+bus = "Effects"
+
+[node name="gunEmpty" type="AudioStreamPlayer3D" parent="audio" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0405648, 0.146 )
+stream = ExtResource( 6 )
+bus = "gunshots"
+
+[node name="CollisionShape" parent="reloadErea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0269033, 0.033772, -0.00392853 )
+
+[node name="bullet" type="MeshInstance" parent="reloadErea" index="1"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0292419, 0.0353848, -0.0136491 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="ammoDisplay" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0066292, 0.0779238, 0.118735 )
+material/0 = SubResource( 8 )
+
+[node name="muzzleFlash" parent="." index="10"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.033007, -0.623601 )
+
+[editable path="mesh/pumpShotGun001"]
